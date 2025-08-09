@@ -1,0 +1,43 @@
+source "https://rubygems.org"
+
+# Core Rails framework
+gem "rails", "~> 8.0.2"
+
+# Database
+gem "pg", "~> 1.1"
+
+# Web server
+gem "puma", ">= 5.0"
+
+# Timezone data for Windows/JRuby
+gem "tzinfo-data", platforms: %i[windows jruby]
+
+# Rails infrastructure gems
+gem "solid_cache"      # Database-backed cache
+gem "solid_queue"      # Database-backed job queue
+gem "solid_cable"      # Database-backed Action Cable
+
+# Performance and deployment
+gem "bootsnap", require: false  # Reduces boot times through caching
+gem "kamal", require: false     # Docker deployment
+gem "thruster", require: false  # HTTP asset caching/compression
+
+# External API integration
+gem "ruby-openai", "~> 8.1"    # OpenAI API client
+
+# CORS support for cross-origin requests
+gem "rack-cors"
+
+# Environment variable management
+gem "dotenv-rails", groups: [:development, :test]
+
+group :development, :test do
+  # Debugging
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+
+  # Security analysis
+  gem "brakeman", require: false
+
+  # Code style enforcement
+  gem "rubocop-rails-omakase", require: false
+end
