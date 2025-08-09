@@ -1,81 +1,98 @@
-# Incident Suggestions Assistant
+# Incident Manager
 
-This project simulates a real-time incident replay system where each message from a transcript is analyzed by an AI assistant (via OpenAI) to extract actionable suggestions. It’s built with a Ruby on Rails backend and a modern frontend using React (Vite/Next.js).
+This project delivers a streamlined **incident replay simulation** that helps responders capture valuable insights in real time. Messages from an incident transcript are played back into the application at accelerated speed, where an **AI assistant (via OpenAI)** analyzes each message and surfaces actionable suggestions.
+
+The system is built on a **Ruby on Rails backend API** paired with a **modern React frontend** (Next.js/vite), providing both reliable server-side processing and a smooth, interactive UI.
 
 ---
 
-## 🚀 How to Start the Server
+## ⭐ Getting Started...
 
-### 1. Backend (Rails)
+### 1. Backend (Ruby on Rails)
 
 ```bash
 cd rails_api
 bundle install
+$Env:OPENAI_API_KEY = "your_key_here"
 rails s
 ```
+For local development, you can store your OpenAI API key in a .env file inside the backend/ directory:
 
-You’ll also need to add your OpenAI key in a `.env` file at the root of your rails app rails_api/:
-
+```bash
+OPENAI_API_KEY=your_key_here
 ```
-OPENAI_API_KEY=your_openai_key_here
-```
+Ensure dotenv-rails is included in your Gemfile to automatically load environment variables in development mode.
 
-Make sure you have `dotenv-rails` in your Gemfile.
-
-### 2. Frontend
-
+### 2) Frontend (React + Next.js/vite)
 ```bash
 cd client
 npm install
 npm run dev
 ```
+By default, the frontend expects the Rails API to be available at:
+http://localhost:3000
 
-This assumes the Rails server is running on `http://localhost:3000`. You can configure CORS in `config/initializers/cors.rb` if needed.
+## 🔁 Simulating an Incident Replay
+1. Launch the frontend in your browser.  
+2. Click **"Simulate Incident"** in the header bar.
 
----
+The application will:
 
-## 🔁 How to Simulate the Replay
-
-1. Visit the frontend in your browser.
-2. Click the **Simulate Incident** button at the top right.
-3. The app will:
-   - Display messages from a mocked transcript.
-   - Send each message to the Rails backend.
-   - The backend uses OpenAI to analyze the message for:
-     - Action Items
-     - Timeline Events
-     - Root Cause Signals
-     - Metadata Hints
-     - Follow-up Tasks (after the incident is over)
-   - Responses are categorized and rendered inline as each message appears.
-
----
-
-## Design Decisions
-
-- **Accessible UI:**: UI is very clean and simple, follows design techniques and rules. Colours and Icons are used as symbols.
-- **UX Improvements**: There is a 'Go To Message' button beside each suggestion which allows for quick and easy message lookups for the user.
-- **Context Management:** Each chat maintains a short history (up to 30 turns) to keep the assistant aware of the situation.
-- **Categorization Strategy:** The assistant must label every suggestion with one of five types.
+- Play back the sample transcript messages in sequence.  
+- Forward each message to the backend API.  
+- Have the Rails API process each message using OpenAI to determine:  
+  - **Action Items**  
+  - **Timeline Events**  
+  - **Root Cause Signals**  
+  - **Metadata Hints**  
+  - **Post-Incident Follow-Ups**  
+- Display categorized suggestions alongside the relevant transcript messages in real time.
 
 ---
 
-## What I’d Add or Improve With More Time
+## 🧠 Key Design Choices
 
-- **Upload Custom Transcripts:** Let users drop in their own incident logs.
-- **Timeline Visualization:** Allow users to view key events along a visual timeline.
-- **Advanced Reporting:** Add filters, exportable reports, and severity tags to organize suggestions.
-- **Ability to save incidents, replay incidents, and organize incidents into folders**
-- **Incident AI Chatbot**: Allow users to chat further with the AI given all the context from the conversation
+### Accessible & Intuitive UI  
+Minimal, uncluttered layout following established design principles.  
+
+Colours and icons act as meaningful visual symbols. Clicking an element triggers a subtle, colour-matched highlight to focus attention on the selected item.
+
+### Data Visualization  
+Interactive pie chart with a carefully chosen, accessible colour palette aligned to the UI theme.  
+
+Segments follow data-viz best practices for clarity, contrast, and proportional accuracy, ensuring information is digestible at a glance.
+
+### UX Enhancements  
+“**Jump**” link beside each suggestion for instant jump to the originating transcript message. Highlghts in the category colour.
+
+### Context Preservation  
+Each analysis includes up to 20 prior conversation turns so the AI maintains continuity when evaluating messages.
 
 ---
 
-## ⏱Time Spent
+## 📌 Potential Future Improvements
 
-**Total:** ~7-8 hours
+With additional time, this project could expand into a more comprehensive incident-management toolkit:
 
-I spent extra time improving the UI, coming up with better UX features, and doing research on prompt engineering.
+- **Custom Transcript Uploads** – Allow users to upload and replay their own incident meeting transcripts.  
+- **Timeline Visualization** – Interactive chronological view of key incident events.  
+- **Severity and Priority Tagging** – Auto-assign urgency levels to suggestions.  
+- **Search & Filtering** – Quickly find suggestions by category, keyword, or severity.  
+- **Export & Reporting** – Download suggestions and timelines as PDF, CSV, or JSON for audits and retrospectives.  
+- **Multi-Incident Dashboard** – Organize and group related incidents for faster context switching.  
+- **Collaborative Review Mode** – Let multiple team members annotate, approve, or dismiss suggestions in real time.  
+- **Conversational AI Assistant** – Chat directly with the AI using the complete incident history for deeper analysis.  
+- **Integration Hooks** – Push actionable items directly into Jira, Slack, PagerDuty, or other workflow tools.  
+- **Performance Analytics** – Track detection accuracy, false positives, and resolution speed over time.
 
+---
 
-"# Incident-Manager" 
-"# Incident-Manager" 
+## ⏱ Development Time
+
+**Total:** ~ 8-10 hours  
+
+Most of the effort focused on:
+
+- Backend development 
+- Adding subtle UX touches to make the tool feel responsive and polished.  
+- Iterating on prompt engineering to improve suggestion accuracy and category consistency."# Rootly-Incident-Manager" 
