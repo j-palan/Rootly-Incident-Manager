@@ -11,7 +11,7 @@ The system is built on a **Ruby on Rails backend API** paired with a **modern Re
 ### 1. Backend (Ruby on Rails)
 
 ```bash
-cd rails_api
+cd backend
 bundle install
 $Env:OPENAI_API_KEY = "your_key_here"
 rails s
@@ -25,7 +25,7 @@ Ensure dotenv-rails is included in your Gemfile to automatically load environmen
 
 ### 2) Frontend (React + Next.js/vite)
 ```bash
-cd client
+cd frontend
 npm install
 npm run dev
 ```
